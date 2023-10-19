@@ -3,7 +3,15 @@ using Dapper;
 
 public static class BD {
     public static string _connectionString = @"Server=localhost;DataBase=BDSeries;Trusted_Connection=True;";
-    
+
+    public static List<Series> MostrarSeries (){
+        List<Series> serie = new List<Series>();
+        using (var SQL = new SqlConnection(_connectionString))
+        {
+            serie = SQL.Query<Series>("SELECT * FROM Series").ToList();
+        }
+        return serie;
+    }
     public static List<Actores> ObtenerActores(int serie){
         List<Actores> actores = new List<Actores>();
         using (var SQL = new SqlConnection(_connectionString))
@@ -13,12 +21,20 @@ public static class BD {
         return actores;
     }
     
-    public static List<Serie> ObtenerSeries(){
-        List<Serie> series = new List<Serie>();
+    public static List<Series> ObtenerSeries(int serie){
+        List<Series> series = new List<Series>();
         using (var SQL = new SqlConnection(_connectionString))
         {
-            series = SQL.Query<Serie>("SELECT * FROM Serie").ToList();
+            series = SQL.Query<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{serie = @pIdSerie}).ToList();
         }
         return series;
+    }
+    public static List<Temporadas> ObtenerTemporadas(int serie){
+        List<Temporadas> temporadas = new List<Series>();
+        using (var SQL = new SqlConnection(_connectionString))
+        {
+            temporadas = SQL.Query<Temporadas>("SELECT * FROM Temporadas WHERE IdSerie = @pIdSerie", new{serie = @pIdSerie}).ToList();
+        }
+        return temporadas;
     }
 }
