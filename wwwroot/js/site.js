@@ -8,14 +8,16 @@
             data: {IdSerie : IdS},
             success:
             function(response)
-        {
-            $("#Name").html(response.Nombre);
-            $("#ImagenSerie").attr("src", response.ImagenSerie);
-            $("#AñoInicio").html("Año de inicio: " + response.AñoInicio);
-            $("#Sinopsis").html("Sinopsis: " +response.Sinopsis);
-            TemporadaFunc();
-            ActoresFunc();
-        }
+            {
+                console.log(response)
+                $("#Name").html(response.nombre);
+                $("#ImagenSerie").attr("src", response.imagenSerie);
+                $("#AñoInicio").html("Año de inicio: " + response.añoInicio);
+                $("#Sinopsis").html("Sinopsis: " + response.sinopsis);
+                
+                TemporadaFunc();
+                ActoresFunc();
+            }
         }
         
     )
@@ -35,7 +37,7 @@ function MostrarActores(IdS)
             function(response)
         {
             response.forEach(element => {
-            Actor += "Nombre del Actor/actriz: " + element.Nombre + "<br>" + "<br>" 
+            Actor += "Nombre del Actor/actriz: " + element.nombre + "<br>" + "<br>" 
            });
 
            $("#Actores").html(Actor);
@@ -60,11 +62,12 @@ function MostrarTemporadas(IdS)
             success:
             function(response)
         {
-            hello.forEach(element => {
-            Tempo += "Numero de Temporada: " + element.NumeroTemporada + "<br>";
-            Tempo += "Titulo de Temporada: " + element.TituloTemporada + "<br>" + "<br>";
+            
+            response.forEach(element => {
+            Tempo += "Numero de Temporada: " + element.numeroTemporada + "<br>";
+            Tempo += "Titulo de Temporada: " + element.tituloTemporada + "<br>" + "<br>";
            });
-
+           console.log(Tempo);
            $("#Temporadas").html(Tempo);
            
         }

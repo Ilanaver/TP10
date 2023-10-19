@@ -9,16 +9,18 @@ public class HomeController : Controller
         ViewBag.mostraSerie = BD.MostrarSeries();
         return View();
     }
+
+    [HttpPost]
     public List<Actores> infoActores(int serie){
         ViewBag.obtenAct = BD.ObtenerActores(serie);
         return ViewBag.obtenAct;
     }
-    public List<Series> infoSerie(int serie){
-        ViewBag.obtenserie = BD.ObtenerSeries(serie);
+    public Series infoSerie(int serie){
+        ViewBag.obtenserie = BD.ObtenerSerie(serie);
         return ViewBag.obtenserie;
     }
-    public List<Temporadas> infoTemporadas(int serie){
-        ViewBag.temporada = BD.ObtenerTemporadas(serie);
+    public List<Temporadas> infoTemporadas(int IdSerie){
+        ViewBag.temporada = BD.ObtenerTemporadas(IdSerie);
         return ViewBag.temporada;
     }
 }

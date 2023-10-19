@@ -21,13 +21,11 @@ public static class BD {
         return actores;
     }
     
-    public static List<Series> ObtenerSeries(int serie){
-        List<Series> series = new List<Series>();
+    public static Series ObtenerSerie(int serie){
         using (var SQL = new SqlConnection(_connectionString))
         {
-            series = SQL.Query<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
+            return SQL.QueryFirstOrDefault<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie});
         }
-        return series;
     }
     public static List<Temporadas> ObtenerTemporadas(int serie){
         List<Temporadas> temporadas = new List<Temporadas>();
