@@ -6,16 +6,19 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        BD.MostrarSeries();
+        ViewBag.mostraSerie = BD.MostrarSeries();
         return View();
     }
-    public IActionResult infoActores(int serie){
-        return BD.ObtenerActores(serie);
+    public Actores infoActores(int serie){
+        ViewBag.obtenAct = BD.ObtenerActores(serie);
+        return ViewBag.obtenAct;
     }
-    public IActionResult infoSerie(int serie){
-        return BD.ObtenerSeries(serie);
+    public Series infoSerie(int serie){
+        ViewBag.obtenserie = BD.ObtenerSeries(serie);
+        return ViewBag.obtenserie;
     }
-    public IActionResult infoTemporadas(int serie){
-        return BD.ObtenerTemporadas(serie);
+    public Temporadas infoTemporadas(int serie){
+        ViewBag.temporada = BD.ObtenerTemporadas(serie);
+        return ViewBag.temporada;
     }
 }

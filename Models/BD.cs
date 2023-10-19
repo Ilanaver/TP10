@@ -16,7 +16,7 @@ public static class BD {
         List<Actores> actores = new List<Actores>();
         using (var SQL = new SqlConnection(_connectionString))
         {
-            actores = SQL.Query<Actores>("SELECT * FROM Actores WHERE IdSerie = @pIdSerie", new{serie = @pIdSerie}).ToList();
+            actores = SQL.Query<Actores>("SELECT * FROM Actores WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
         }
         return actores;
     }
@@ -25,15 +25,15 @@ public static class BD {
         List<Series> series = new List<Series>();
         using (var SQL = new SqlConnection(_connectionString))
         {
-            series = SQL.Query<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{serie = @pIdSerie}).ToList();
+            series = SQL.Query<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
         }
         return series;
     }
     public static List<Temporadas> ObtenerTemporadas(int serie){
-        List<Temporadas> temporadas = new List<Series>();
+        List<Temporadas> temporadas = new List<Temporadas>();
         using (var SQL = new SqlConnection(_connectionString))
         {
-            temporadas = SQL.Query<Temporadas>("SELECT * FROM Temporadas WHERE IdSerie = @pIdSerie", new{serie = @pIdSerie}).ToList();
+            temporadas = SQL.Query<Temporadas>("SELECT * FROM Temporadas WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
         }
         return temporadas;
     }

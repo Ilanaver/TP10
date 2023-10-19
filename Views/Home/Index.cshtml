@@ -2,16 +2,20 @@
 <img src="/img/Logo-Pasqu.jfif">
 <h1>Bienvenido a Series para Enanos</h1>
 <!--Card-->
-<div class="card" style="width: 18rem;">
-  <img src="/img/Logo-Pasqu.jfif" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Temporadas</a>        
-    <a href="#" class="btn btn-primary">Actores</a>
-    <a href="#" class="btn btn-primary">Mas Info</a>
+@foreach (var item in ViewBag.mostraSerie)
+{
+  <div class="card" style="width: 18rem;">
+    <img src="/img/Logo-Pasqu.jfif" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">@item.Nombre</h5>
+      <p class="card-text">@item.Sinopsis</p>
+      <a href="#" class="btn btn-primary">Temporadas</a>        
+      <a href="#" class="btn btn-primary">Actores</a>
+      <a href="#" class="btn btn-primary">Mas Info</a>
+    </div>
   </div>
-</div>
+}
+
 <!--Fin Card-->
 <!--Modal-->
 <div class="modal" tabindex="-1">
