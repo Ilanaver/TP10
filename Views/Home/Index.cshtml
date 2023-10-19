@@ -9,16 +9,16 @@
     <div class="card-body">
       <h5 class="card-title">@item.Nombre</h5>
       <p class="card-text">@item.Sinopsis</p>
-      <a href="#" class="btn btn-primary">Temporadas</a>        
-      <a href="#" class="btn btn-primary">Actores</a>
-      <a href="#" class="btn btn-primary">Mas Info</a>
+      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarTemporadas(@item.IdSerie)">Temporadas</button>        
+      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarActores(@item.IdSerie)">Actores</button>
+      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarSerie(@item.IdSerie)">Mas Info</button>
     </div>
   </div>
 }
 
 <!--Fin Card-->
 <!--Modal-->
-<div class="modal" tabindex="-1">
+<div class="modal" id="ModalTemporada" tabindex="-1" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -26,7 +26,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="" alt="" id="ImagenSerie">
+        <div id="Nombre"></div>
+        <div id="AñoInicio"></div>
+        <div id="Sinopsis"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
