@@ -10,7 +10,12 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult infoActores(int serie){
-        BD.ObtenerActores(serie);
-        return
+        return BD.ObtenerActores(serie);
+    }
+    public IActionResult infoSerie(int serie){
+        return BD.ObtenerSeries(serie);
+    }
+    public IActionResult infoTemporadas(int serie){
+        return BD.ObtenerTemporadas(serie);
     }
 }
