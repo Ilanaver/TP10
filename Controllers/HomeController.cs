@@ -11,12 +11,12 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public List<Actores> infoActores(int serie){
-        ViewBag.obtenAct = BD.ObtenerActores(serie);
+    public List<Actores> infoActores(int IdSerie){
+        ViewBag.obtenAct = BD.ObtenerActores(IdSerie);
         return ViewBag.obtenAct;
     }
-    public Series infoSerie(int serie){
-        ViewBag.obtenserie = BD.ObtenerSerie(serie);
+    public Series infoSerie(int IdSerie){
+        ViewBag.obtenserie = BD.ObtenerSerie(IdSerie);
         return ViewBag.obtenserie;
     }
     public List<Temporadas> infoTemporadas(int IdSerie){

@@ -10,13 +10,12 @@
             function(response)
             {
                 console.log(response)
-                $("#Name").html(response.nombre);
+                $("#NombreSerie").html(response.nombre);
                 $("#ImagenSerie").attr("src", response.imagenSerie);
                 $("#AñoInicio").html("Año de inicio: " + response.añoInicio);
                 $("#Sinopsis").html("Sinopsis: " + response.sinopsis);
-                
-                TemporadaFunc();
-                ActoresFunc();
+                console.log(Tempo);
+
             }
         }
         
@@ -35,15 +34,19 @@ function MostrarActores(IdS)
             data: {IdSerie : IdS},
             success:
             function(response)
-        {
-            response.forEach(element => {
-            Actor += "Nombre del Actor/actriz: " + element.nombre + "<br>" + "<br>" 
-           });
+            {
+                $("#NombreSerie").html(response.nombre);
+                $("#ImagenSerie").attr("src", response.imagenSerie);
 
-           $("#Actores").html(Actor);
-           InfoSerieFunc();
-           TemporadaFunc();
-        }
+                response.forEach(element => {
+                    Actor += "Nombre del Actor/actriz: " + element.nombre + "<br>" + "<br>";
+                });
+                console.log(Actor);
+                $("#Actores").html(Actor);
+                $("#AñoInicio").html("");
+                $("#Sinopsis").html("");
+
+            }
         }
         
     )
@@ -62,6 +65,8 @@ function MostrarTemporadas(IdS)
             success:
             function(response)
         {
+            $("#NombreSerie").html(response.nombre);
+            $("#ImagenSerie").attr("src", response.imagenSerie);
             
             response.forEach(element => {
             Tempo += "Numero de Temporada: " + element.numeroTemporada + "<br>";
@@ -69,7 +74,8 @@ function MostrarTemporadas(IdS)
            });
            console.log(Tempo);
            $("#Temporadas").html(Tempo);
-           
+           TemporadaFunc();
+           $("Actores").html("");
         }
         }
         

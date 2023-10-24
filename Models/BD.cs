@@ -6,7 +6,7 @@ public static class BD {
 
     public static List<Series> MostrarSeries (){
         List<Series> serie = new List<Series>();
-        using (var SQL = new SqlConnection(_connectionString))
+        using (SqlConnection SQL = new SqlConnection(_connectionString))
         {
             serie = SQL.Query<Series>("SELECT * FROM Series").ToList();
         }
@@ -14,7 +14,7 @@ public static class BD {
     }
     public static List<Actores> ObtenerActores(int serie){
         List<Actores> actores = new List<Actores>();
-        using (var SQL = new SqlConnection(_connectionString))
+        using (SqlConnection SQL = new SqlConnection(_connectionString))
         {
             actores = SQL.Query<Actores>("SELECT * FROM Actores WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
         }
@@ -22,14 +22,17 @@ public static class BD {
     }
     
     public static Series ObtenerSerie(int serie){
-        using (var SQL = new SqlConnection(_connectionString))
+        Series series;
+        string sql = "SELECT * FROM Series WHERE IdSerie = @pIdSerie";
+        using (SqlConnection bd = new SqlConnection(_connectionString))
         {
-            return SQL.QueryFirstOrDefault<Series>("SELECT * FROM Series WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie});
+            series = bd.QueryFirstOrDefault<Series>(sql, new{pIdSerie = serie});
         }
+        return series;
     }
     public static List<Temporadas> ObtenerTemporadas(int serie){
         List<Temporadas> temporadas = new List<Temporadas>();
-        using (var SQL = new SqlConnection(_connectionString))
+        using (SqlConnection SQL = new SqlConnection(_connectionString))
         {
             temporadas = SQL.Query<Temporadas>("SELECT * FROM Temporadas WHERE IdSerie = @pIdSerie", new{@pIdSerie = serie}).ToList();
         }

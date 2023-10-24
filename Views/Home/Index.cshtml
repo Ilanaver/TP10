@@ -9,9 +9,9 @@
     <div class="card-body">
       <h5 class="card-title">@item.Nombre</h5>
       <p class="card-text">@item.Sinopsis</p>
-      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarTemporadas(@item.IdSerie)">Temporadas</button>        
-      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarActores(@item.IdSerie)">Actores</button>
       <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarSerie(@item.IdSerie)">Mas Info</button>
+      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarActores(@item.IdSerie)">Actores</button>
+      <button type="buttom" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporada" onclick="MostrarTemporadas(@item.IdSerie)">Temporadas</button>        
     </div>
   </div>
 }
@@ -22,14 +22,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title" id="NombreSerie"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="Texto">
         <img src="" alt="" id="ImagenSerie">
         <div class="modal-body">
           <p id="Temporadas"></p>
           <p id="Nombre"></p>
+          <p id="Actores"></p>
           <P id="AñoInicio"></P>
           <p id="Sinopsis"></p>
         </div>
@@ -40,5 +41,6 @@
     </div>
   </div>
 </div>
+
 <!--Fin Modal-->
 
